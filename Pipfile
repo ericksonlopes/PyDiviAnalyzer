@@ -11,6 +11,7 @@ beautifulsoup4 = "*"
 streamlit = "*"
 pandas = "*"
 matplotlib = "*"
+openai = "*"
 
 [dev-packages]
 

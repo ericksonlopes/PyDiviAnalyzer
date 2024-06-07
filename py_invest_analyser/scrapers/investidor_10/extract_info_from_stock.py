@@ -1,7 +1,7 @@
 from bs4 import Tag
 
-from py_invest_analyser.models import Stock
-from py_invest_analyser.services.investidor_10.extract_info_abstract import ExtractActiveInformation
+from py_invest_analyser.models import StockModel
+from py_invest_analyser.scrapers.investidor_10.extract_info_abstract import ExtractActiveInformation
 
 
 class ExtractInfoFromStock(ExtractActiveInformation):
@@ -19,9 +19,9 @@ class ExtractInfoFromStock(ExtractActiveInformation):
         except Exception as error:
             self.logger.error(f"Error to get value cell {error}")
 
-    def get_active_keys_indicators(self, active_name) -> Stock:
+    def get_active_keys_indicators(self, active_name) -> StockModel:
         try:
-            return Stock(name=active_name, type="acoes")
+            return StockModel(name=active_name, type="acoes")
         except Exception as error:
             self.logger.error(f"Error to get active keys indicators {error}")
 
@@ -52,14 +52,14 @@ class ExtractInfoFromStock(ExtractActiveInformation):
 
         return indicators
 
-    def get_info_active(self, active_name) -> Stock:
-        ret_stock = Stock()
+    def get_info_active(self, active_name) -> StockModel:
+        ret_stock = StockModel()
         ret_stock.name = active_name
 
         try:
             stock = self.get_page_infos_for_active(active_name, "acoes")
 
-            list_keys_ref = list(Stock().__dict__.keys())
+            list_keys_ref = list(StockModel().__dict__.keys())
 
             for key, value in stock.items():
                 key = key.rstrip()

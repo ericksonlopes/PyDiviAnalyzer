@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup, Tag
 
 from config import Logger
 from py_invest_analyser.exceptions import ActiveSearchError
-from py_invest_analyser.models import Active
+from py_invest_analyser.models import ActiveModel
 
 
 class ExtractActiveInformation(ABC, Logger):
@@ -42,7 +42,7 @@ class ExtractActiveInformation(ABC, Logger):
     def get_page_infos_for_active(self, active_name, active_type, time_for_loop=0) -> dict or str:
         self.logger.info(f"Getting information {active_name}... {time_for_loop if time_for_loop > 0 else ''}")
 
-        active = Active(name=active_name, type=active_type)
+        active = ActiveModel(name=active_name, type=active_type)
 
         try:
             if time_for_loop == 5:

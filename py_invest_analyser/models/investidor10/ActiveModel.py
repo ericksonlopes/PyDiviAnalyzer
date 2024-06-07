@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Active:
+class ActiveModel:
     name: str = None
     company_name: str = None
     type: str = None

@@ -1,7 +1,7 @@
 from bs4 import Tag
 
 from py_invest_analyser.models import BDR
-from py_invest_analyser.services.investidor_10.extract_info_abstract import ExtractActiveInformation
+from py_invest_analyser.scrapers.investidor_10.extract_info_abstract import ExtractActiveInformation
 
 
 class ExtractInfoFromBDR(ExtractActiveInformation):

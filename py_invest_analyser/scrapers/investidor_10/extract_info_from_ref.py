@@ -1,8 +1,8 @@
 from bs4 import Tag
 
 from py_invest_analyser.exceptions import IndicatorNotFound
-from py_invest_analyser.models import RealEstateFunds
-from py_invest_analyser.services.investidor_10.extract_info_abstract import ExtractActiveInformation
+from py_invest_analyser.models import RealEstateFundsModel
+from py_invest_analyser.scrapers.investidor_10.extract_info_abstract import ExtractActiveInformation
 
 
 class ExtractInfoFromREF(ExtractActiveInformation):
@@ -19,8 +19,8 @@ class ExtractInfoFromREF(ExtractActiveInformation):
     def get_value_cell(self, cell: Tag) -> str:
         return cell.find("div", class_="value").text.replace("\n", "")
 
-    def get_active_keys_indicators(self, active_name) -> RealEstateFunds:
-        return RealEstateFunds(name=active_name, type="ref")
+    def get_active_keys_indicators(self, active_name) -> RealEstateFundsModel:
+        return RealEstateFundsModel(name=active_name, type="ref")
 
     def get_indicators(self) -> dict:
         indicators = {}
@@ -44,14 +44,14 @@ class ExtractInfoFromREF(ExtractActiveInformation):
 
         return indicators
 
-    def get_info_active(self, active_name: str) -> RealEstateFunds:
-        ret_ref = RealEstateFunds()
+    def get_info_active(self, active_name: str) -> RealEstateFundsModel:
+        ret_ref = RealEstateFundsModel()
         ret_ref.name = active_name
 
         try:
             ref = self.get_page_infos_for_active(active_name, "fiis")
 
-            list_keys_ref = list(RealEstateFunds().__dict__.keys())
+            list_keys_ref = list(RealEstateFundsModel().__dict__.keys())
 
             for key, value in ref.items():
                 if key in list_keys_ref:

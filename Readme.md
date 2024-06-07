@@ -75,7 +75,7 @@ from py_invest_analyser.services import ExtractInfoFromStock
 stock = ExtractInfoFromStock().get_info_active('B3SA3')
 
 print(stock)
-# Stock(name='B3SA3', company_nam...
+# StockModel(name='B3SA3', company_nam...
 ```
 
 Additionally, providing context to a more complex example, you can execute a multi-threaded script to obtain information
@@ -88,7 +88,7 @@ a CSV file.
 import concurrent.futures
 import csv
 
-from py_invest_analyser.models import Stock
+from py_invest_analyser.models import StockModel
 from py_invest_analyser.services import ExtractInfoFromStock
 
 actives = [
@@ -117,7 +117,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 
 with open('result_for_actives.csv', 'w', newline='', encoding="utf-8") as file:
     writer = csv.writer(file)
-    writer.writerow(Stock().get_meaning_of_fields().values())
+    writer.writerow(StockModel().get_meaning_of_fields().values())
 
     for active in result_actives:
         writer.writerow(active.__dict__.values())

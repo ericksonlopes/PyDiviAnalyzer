@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from types import MappingProxyType
 
-from py_invest_analyser.models.investidor10.Active import Active
+from py_invest_analyser.models.investidor10.ActiveModel import ActiveModel
 
 
 @dataclass
-class RealEstateFunds(Active):
+class RealEstateFundsModel(ActiveModel):
     company_name_ref: str = None
     cnpj: str = None
     target_audience: str = None

@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from types import MappingProxyType
 
-from py_invest_analyser.models.investidor10.Active import Active
+from py_invest_analyser.models.investidor10.ActiveModel import ActiveModel
 
 
 @dataclass
-class BDR(Active):
+class BDR(ActiveModel):
     p_l: str = None
     p_vp: str = None
     p_e: str = None
